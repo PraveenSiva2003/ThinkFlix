@@ -1,0 +1,107 @@
+.generate-page {
+  padding: 2rem;
+  color: white;
+  background-color: #111;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.upload-section,
+.style-selection,
+.audio-section {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.file-upload {
+  display: inline-block;
+  background: #222;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 0.5rem;
+  border: 1px solid red;
+}
+
+.style-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.style-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  background-color: transparent;
+}
+
+.simpsons-style {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.anime-style {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.style-image:hover {
+  transform: scale(1.05);
+  border-color: red;
+}
+
+.style-image.selected {
+  border: 2px solid red;
+}
+
+.generate-btn,
+.play-audio-btn {
+  background-color: red;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.script-container {
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 800px;
+  margin-inline: auto;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.script-line {
+  margin-bottom: 0.5rem;
+}
+
+.speaker-name {
+  font-weight: bold;
+  color: #f55;
+}
+
+.audio-player {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 500px;
+}

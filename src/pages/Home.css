@@ -1,0 +1,105 @@
+.home-container {
+    background-color: #000;
+    color: white;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: #bbb;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Trending Shows */
+  .trending-courses {
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .trending-courses h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #ff1a1a;
+  }
+  
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .course {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    border-left: 4px solid crimson;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .course:hover {
+    background-color: #222;
+  }
+  
+  /* Learner Reviews */
+  .user-reviews {
+    margin: 3rem auto 1rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, #0a0a0a, #121212);
+    border: 1px solid #2c2c2c;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    width: 100%;
+    max-width: 850px;
+  }
+  
+  .user-reviews h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffeb3b;
+  }
+  
+  .review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .review {
+    background-color: #181818;
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    border-left: 3px solid #f39c12;
+    font-style: italic;
+    position: relative;
+  }
+  
+  .review strong {
+    font-weight: 600;
+    color: #fff;
+    font-style: normal;
+  }
+  
