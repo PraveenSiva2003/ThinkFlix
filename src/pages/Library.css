@@ -1,133 +1,94 @@
-/* Landing.css */
-
-.landing-container {
+.library-page {
+  background-color: black;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #000000, #0d0d0d);
+  padding: 2rem;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5rem 2rem;
-  gap: 3rem;
   font-family: 'Inter', sans-serif;
 }
 
-.hero-header {
+.library-title {
+  font-size: 3rem;
+  color: #ff1a1a;
   text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 800;
 }
 
-.hero-title {
-  font-size: 4rem;
-  color: #ff1a1a;
-  font-weight: 900;
-  animation: flicker 2s infinite;
-  letter-spacing: 2px;
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  padding-bottom: 4rem;
 }
 
-.hero-subtext {
-  font-size: 1.2rem;
-  color: #cccccc;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.highlighted-text {
-  color: #ff1a1a;
-}
-
-.card-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-  max-width: 1200px;
-}
-
-.style-card {
-  width: 320px;
-  height: 240px;
-  background: rgba(15, 15, 15, 0.7);
-  border: 1px solid #ff1a1a66;
-  border-radius: 16px;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px #ff1a1a22;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.style-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #ff1a1a77;
-}
-
-.style-video {
+.show-card {
+  background-color: #111;
+  border: 2px solid #ff1a1a55;
+  border-radius: 14px;
+  padding: 1rem;
+  position: relative;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  max-width: 300px;
+  box-shadow: 0 0 15px #ff1a1a22;
+  transition: transform 0.3s ease;
 }
 
-.style-card-title {
-  background: #000;
-  color: #ff4d4d;
-  font-size: 0.95rem;
-  padding: 0.75rem;
-  text-align: center;
-  font-weight: 600;
+.show-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 20px #ff1a1a77;
 }
 
-.cta-section {
-  text-align: center;
-  margin-top: 2rem;
+.thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.cta-button {
-  padding: 0.85rem 2.2rem;
+.show-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.logo-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 60px;
+  opacity: 0.9;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   background-color: #ff1a1a;
   border: none;
   color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 0 15px #ff1a1a55;
+  padding: 5px 10px;
+  transition: background-color 0.2s ease;
 }
 
-.cta-button:hover {
-  background-color: #e60000;
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px #ff1a1aaa;
+.delete-button:hover {
+  background-color: #cc0000;
 }
 
-.pricing-link {
-  color: #ff6666;
-  text-decoration: underline;
-  font-size: 0.9rem;
-  display: inline-block;
-  margin-top: 0.75rem;
+.show-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  text-align: center;
+  color: white;
 }
 
-/* Flicker Animation for Logo */
-@keyframes flicker {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 0.9;
-  }
-  40% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.95;
-  }
+.audio-player {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 10px;
 }
