@@ -1,10 +1,12 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom"; // ✅ use NavLink
+import { NavLink, useNavigate, useLocation } from "react-router-dom"; // ✅ Added useLocation
 import { logOut } from "../authService";
 import "./Navbar.css";
 
 const Navbar = ({ user }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
   const handleSignOut = async () => {
     try {
@@ -29,7 +31,9 @@ const Navbar = ({ user }) => {
             <NavLink to="/dashboard" className="nav-link">Dashboard</NavLink>
           </>
         )}
-        <NavLink to="/pricing" className="nav-link">Pricing</NavLink> {/* ✅ Always visible */}
+        {!isLandingPage && ( // ✅ Only show on non-landing pages
+          <NavLink to="/pricing" className="nav-link">Pricing</NavLink>
+        )}
       </div>
 
       <div className="nav-auth">
