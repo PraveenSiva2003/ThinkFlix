@@ -1,12 +1,12 @@
 import "./Generate.css";
 import React, { useState } from "react";
-import { auth, db } from "../firebase"; // 👈 make sure db is exported from firebase.js
-import { collection, addDoc } from "firebase/firestore"; // 🔥 for Firestore saving
+import { auth, db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const isDev = window.location.hostname === "localhost";
 const backendUrl = isDev
-  ? "http://localhost:8080"
-  : "https://thinkflix-backend-269369054232.us-central1.run.app";
+  ? "http://localhost:5000" // use 8080 if that's your local port
+  : "https://thinkflix.onrender.com";
 
 function formatTitle(filename) {
   const raw = filename.replace(/\.[^/.]+$/, "");
