@@ -1,0 +1,10 @@
+Flask
+Flask-CORS
+openai
+PyPDF2
+gunicorn
+python-dotenv
+requests
+pydub
+elevenlabs
+
