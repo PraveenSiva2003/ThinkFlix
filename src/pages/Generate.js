@@ -5,7 +5,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 const isDev = window.location.hostname === "localhost";
 const backendUrl = isDev
-  ? "http://localhost:5000" // use 8080 if that's your local port
+  ? "http://localhost:8080" // ✅ updated from 5000 to 8080
   : "https://thinkflix.onrender.com";
 
 function formatTitle(filename) {
@@ -50,20 +50,25 @@ const Generate = () => {
       formData.append("file", uploadedFile);
       formData.append("style", selectedStyle);
 
+      console.log("📤 Sending request to:", `${backendUrl}/generate_script`);
+
       const res = await fetch(`${backendUrl}/generate_script`, {
         method: "POST",
         body: formData,
       });
 
-      if (!res.ok) throw new Error("Script generation failed");
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Script generation failed: ${res.status} - ${text}`);
+      }
 
       const data = await res.json();
       setScriptData(data);
       setCoverUrl(data.coverUrl);
       alert("✅ Script generated! Ready to generate audio.");
     } catch (err) {
-      console.error("Script error:", err);
-      alert("Error generating script");
+      console.error("❌ Script error:", err);
+      alert("Error generating script. Check your backend server and console for more info.");
     } finally {
       setIsGenerating(false);
     }
@@ -106,12 +111,11 @@ const Generate = () => {
         };
 
         await addDoc(collection(db, "users", user.uid, "shows"), showData);
-
         alert("📚 Your show has been saved to your Library!");
       }
     } catch (err) {
-      console.error("Audio error:", err);
-      alert("Error generating audio");
+      console.error("❌ Audio error:", err);
+      alert("Error generating audio. Check console for more info.");
     } finally {
       setIsGenerating(false);
     }

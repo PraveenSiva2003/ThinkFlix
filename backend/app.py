@@ -5,7 +5,7 @@ import openai
 import requests
 import os
 import PyPDF2
-from cover_generator import generate_cover  # Uses non-project scoped key
+from cover_generator import generate_cover  # Make sure this is implemented properly
 
 # 🔑 API Keys
 OPENAI_API_KEY = "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"
@@ -17,7 +17,6 @@ CORS(app)
 
 client = openai.OpenAI(api_key=OPENAI_API_KEY, project=OPENAI_PROJECT_ID)
 
-# 🎙️ Character-Specific Voices
 VOICE_MAPPING = {
     "Narrator": "qNkzaJoHLLdpvgh5tISm",
     "Spongebob": "518N6sBEhyHnZncVEWyJ",
@@ -35,19 +34,14 @@ def home():
 
 @app.route("/generate_script", methods=["POST"])
 def generate_script():
-    # 🧪 Debug logs
-    print("🧪 DEBUG — request.files:", request.files)
-    print("🧪 DEBUG — request.form:", request.form)
-
     if "file" not in request.files:
-        print("❌ 'file' not found in request.files")
         return jsonify({"error": "❌ No file uploaded"}), 400
 
     file = request.files["file"]
     selected_style = request.form.get("style", "").strip()
 
-    print("🧪 DEBUG — file.filename:", file.filename)
-    print("🧪 DEBUG — selected_style:", selected_style)
+    if not selected_style:
+        return jsonify({"error": "❌ No style provided"}), 400
 
     course_text = ""
     if file.filename.endswith(".pdf"):
@@ -93,26 +87,18 @@ def generate_script():
 
         formatted_response = json.loads(ai_response)
 
-        # 🧠 Generate AI Cover
-        summary = " ".join([f"{line['speaker']}: {line['dialogue']}" for line in formatted_response["script"]])
-        cover_prompt = f"""
-        Create a vertical 1024x1792 AI-generated show cover for an educational series on THINKFLIX.
-        The show is titled: '{formatted_response['title']}'.
-        Match the aesthetic of {selected_style} (e.g. glowing {selected_style}-inspired characters).
-        Include the following elements:
-        - The word THINKFLIX at the top in bold, red cinematic lettering
-        - A large, bold show title beneath it
-        - Glowing, animated-style characters representing Narrator, Student, and Expert
-        - Neon educational icons like books, graphs, or brain circuits
-        - A Netflix-inspired dark background with a moody, immersive vibe
-        Do NOT reference other brand names directly.
-        Context: {summary[:300]}
-        """
+        # ✅ Fixed: call generate_cover() with all required args
+        cover_url = generate_cover(
+            title=formatted_response.get("title", "Untitled"),
+            style=selected_style,
+            script_lines=formatted_response.get("script", [])
+        )
 
-        cover_url = generate_cover(cover_prompt)
-        formatted_response["coverUrl"] = cover_url
-
-        return jsonify(formatted_response)
+        return jsonify({
+            "title": formatted_response.get("title", "Untitled"),
+            "script": formatted_response.get("script", []),
+            "coverUrl": cover_url
+        })
 
     except Exception as e:
         print("❌ OpenAI API Error:", str(e))
